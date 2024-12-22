@@ -18,6 +18,7 @@ public class AdditionServlet extends HttpServlet {
         int num2 = Integer.parseInt(request.getParameter("num2"));
         int sum = num1 + num2;
         
+        
         PrintWriter pw = response.getWriter();
         pw.println("<h2>Result of Addition</h2>");
         pw.println("<p>" + num1 + " + " + num2 + " = " + sum + "</p>");
