@@ -1,34 +1,39 @@
 package com.itsc.calculator;
 
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
 import java.io.IOException;
-
+@WebServlet("/OperationServlet")
 public class OperationServlet extends HttpServlet {
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 3L;
+	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String num1 = request.getParameter("num1");
+        String num2 = request.getParameter("num2");
         String operation = request.getParameter("operation");
-        RequestDispatcher dispatcher = null;
 
-        switch (operation) {
-            case "add":
-                dispatcher = request.getRequestDispatcher("/additionservlet");
-                break;
-            case "subtract":
-                dispatcher = request.getRequestDispatcher("/subtractionservlet");
-                break;
-            default:
-                response.getWriter().println("Invalid Operation");
-                return;
+        try {
+            int n1 = Integer.parseInt(num1);
+            int n2 = Integer.parseInt(num2);
+            int result = 0;
+
+            switch (operation) {
+                case "add":
+                    result = n1 + n2;
+                    break;
+                case "subtract":
+                    result = n1 - n2;
+                    break;
+            }
+
+            response.setContentType("text/html");
+            response.getWriter().println("<h1>Result: " + result + "</h1>");
+        } catch (NumberFormatException e) {
+            response.getWriter().println("<h1>Error: Invalid input</h1>");
         }
-        
-        dispatcher.forward(request, response);
     }
 }

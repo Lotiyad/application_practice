@@ -1,36 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+         version="3.1">
+
   <display-name>calculatorProjectUsingDispatcher</display-name>
+  
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
+    <welcome-file>Calculator.html</welcome-file>
+    
   </welcome-file-list>
-   <servlet> 
- <servlet-name>OperationServlet</servlet-name> 
- <servlet-class>com.itsc.calculator.OperationServlet</servlet-class>  </servlet> 
- <servlet-mapping> 
- <servlet-name>OperationServlet</servlet-name> 
- <url-pattern>OperationServlet</url-pattern> 
- </servlet-mapping> 
   
- <servlet> 
- <servlet-name>AdditionServlet</servlet-name> 
- <servlet-class>com.itsc.calculator.AdditionServlet</servlet-class>  </servlet> 
- <servlet-mapping> 
- <servlet-name>AdditionServlet</servlet-name> 
- <url-pattern>addservlet</url-pattern> 
- </servlet-mapping> 
+  <servlet> 
+    <servlet-name>OperationServlet</servlet-name> 
+    <servlet-class>com.itsc.calculator.OperationServlet</servlet-class>  
+  </servlet> 
   
- <servlet> 
- <servlet-name>SubtractionServlet</servlet-name> 
- <servlet-class>com.itsc.calculator.SubtractionServlet</servlet-class>  </servlet> 
- <servlet-mapping> 
- <servlet-name>SubtractionServlet</servlet-name> 
- <url-pattern>subtractservlet</url-pattern> 
- </servlet-mapping>
+  <servlet-mapping> 
+    <servlet-name>OperationServlet</servlet-name> 
+    <url-pattern>//http://localhost:8080/calculatorProjectUsingDispatcher/OperationServlet
+    </url-pattern> 
+  </servlet-mapping>
+  
+  <servlet> 
+    <servlet-name>AdditionServlet</servlet-name> 
+    <servlet-class>com.itsc.calculator.AdditionServlet</servlet-class>  
+  </servlet> 
+  
+  <servlet-mapping> 
+    <servlet-name>AdditionServlet</servlet-name> 
+    <url-pattern>//http://localhost:8080/calculatorProjectUsingDispatcher/AdditionServlet</url-pattern> 
+  </servlet-mapping>
+  
+  <servlet> 
+    <servlet-name>SubtractionServlet</servlet-name> 
+    <servlet-class>com.itsc.calculator.SubtractionServlet</servlet-class>  
+  </servlet> 
+  
+  <servlet-mapping> 
+    <servlet-name>SubtractionServlet</servlet-name> 
+    <url-pattern>//http://localhost:8080/calculatorProjectUsingDispatcher/SubtractionServlet</url-pattern> 
+  </servlet-mapping>
+
 </web-app>
